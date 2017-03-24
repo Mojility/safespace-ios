@@ -12,7 +12,7 @@
         <!--Virtual Safe Spaces-->
         <scene sceneID="FYz-qX-Mxy">
             <objects>
-                <collectionViewController id="698-SI-6jD" sceneMemberID="viewController">
+                <collectionViewController id="698-SI-6jD" customClass="RoomCollectionViewController" customModule="VirtualSafeSpace" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="h4Z-tk-OPR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,15 +24,15 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="q2G-wc-pWk">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="RoomCell" reuseIdentifier="RoomCell" id="q2G-wc-pWk" customClass="CollectionRoomViewCell" customModule="VirtualSafeSpace" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HIV Positivity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUk-T8-pi8">
-                                            <rect key="frame" x="8" y="15" width="101" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUk-T8-pi8">
+                                            <rect key="frame" x="8" y="15" width="359" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -41,6 +41,7 @@
                                     </subviews>
                                 </view>
                                 <connections>
+                                    <outlet property="label" destination="aUk-T8-pi8" id="JbJ-bb-4oa"/>
                                     <segue destination="use-Rh-E1S" kind="showDetail" id="T42-8a-J5a"/>
                                 </connections>
                             </collectionViewCell>

@@ -14,6 +14,8 @@
 		7ADD3B771E8593B8003614D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ADD3B761E8593B8003614D8 /* Assets.xcassets */; };
 		7ADD3B7A1E8593B8003614D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ADD3B781E8593B8003614D8 /* LaunchScreen.storyboard */; };
 		7ADD3B851E8593B8003614D8 /* VirtualSafeSpaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD3B841E8593B8003614D8 /* VirtualSafeSpaceTests.swift */; };
+		7ADD3B901E8599DC003614D8 /* RoomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD3B8F1E8599DC003614D8 /* RoomCollectionViewController.swift */; };
+		7ADD3B921E85A115003614D8 /* CollectionRoomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD3B911E85A115003614D8 /* CollectionRoomViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		7ADD3B801E8593B8003614D8 /* VirtualSafeSpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtualSafeSpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ADD3B841E8593B8003614D8 /* VirtualSafeSpaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualSafeSpaceTests.swift; sourceTree = "<group>"; };
 		7ADD3B861E8593B8003614D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ADD3B8F1E8599DC003614D8 /* RoomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewController.swift; sourceTree = "<group>"; };
+		7ADD3B911E85A115003614D8 /* CollectionRoomViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionRoomViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 				7ADD3B781E8593B8003614D8 /* LaunchScreen.storyboard */,
 				7ADD3B7B1E8593B8003614D8 /* Info.plist */,
 				7ADD3B731E8593B8003614D8 /* VirtualSafeSpace.xcdatamodeld */,
+				7ADD3B8F1E8599DC003614D8 /* RoomCollectionViewController.swift */,
+				7ADD3B911E85A115003614D8 /* CollectionRoomViewCell.swift */,
 			);
 			path = VirtualSafeSpace;
 			sourceTree = "<group>";
@@ -205,7 +211,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ADD3B6F1E8593B8003614D8 /* ViewController.swift in Sources */,
+				7ADD3B901E8599DC003614D8 /* RoomCollectionViewController.swift in Sources */,
 				7ADD3B751E8593B8003614D8 /* VirtualSafeSpace.xcdatamodeld in Sources */,
+				7ADD3B921E85A115003614D8 /* CollectionRoomViewCell.swift in Sources */,
 				7ADD3B6D1E8593B8003614D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
