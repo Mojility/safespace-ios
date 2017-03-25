@@ -149,6 +149,144 @@ class Decoders {
             fatalError("formatter failed to parse \(source)")
         } 
 
+        // Decoder for [Authorization]
+        Decoders.addDecoder(clazz: [Authorization].self) { (source: AnyObject) -> [Authorization] in
+            return Decoders.decode(clazz: [Authorization].self, source: source)
+        }
+        // Decoder for Authorization
+        Decoders.addDecoder(clazz: Authorization.self) { (source: AnyObject) -> Authorization in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = Authorization()
+            instance.token = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["token"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [Emote]
+        Decoders.addDecoder(clazz: [Emote].self) { (source: AnyObject) -> [Emote] in
+            return Decoders.decode(clazz: [Emote].self, source: source)
+        }
+        // Decoder for Emote
+        Decoders.addDecoder(clazz: Emote.self) { (source: AnyObject) -> Emote in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = Emote()
+            instance.id = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"] as AnyObject?)
+            instance.label = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["label"] as AnyObject?)
+            instance.code = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["code"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [EmoteTotals]
+        Decoders.addDecoder(clazz: [EmoteTotals].self) { (source: AnyObject) -> [EmoteTotals] in
+            return Decoders.decode(clazz: [EmoteTotals].self, source: source)
+        }
+        // Decoder for EmoteTotals
+        Decoders.addDecoder(clazz: EmoteTotals.self) { (source: AnyObject) -> EmoteTotals in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = EmoteTotals()
+            instance.id = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"] as AnyObject?)
+            instance.quantity = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["quantity"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [Infraction]
+        Decoders.addDecoder(clazz: [Infraction].self) { (source: AnyObject) -> [Infraction] in
+            return Decoders.decode(clazz: [Infraction].self, source: source)
+        }
+        // Decoder for Infraction
+        Decoders.addDecoder(clazz: Infraction.self) { (source: AnyObject) -> Infraction in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = Infraction()
+            instance.id = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"] as AnyObject?)
+            instance.label = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["label"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [InfractionTotals]
+        Decoders.addDecoder(clazz: [InfractionTotals].self) { (source: AnyObject) -> [InfractionTotals] in
+            return Decoders.decode(clazz: [InfractionTotals].self, source: source)
+        }
+        // Decoder for InfractionTotals
+        Decoders.addDecoder(clazz: InfractionTotals.self) { (source: AnyObject) -> InfractionTotals in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = InfractionTotals()
+            instance.id = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"] as AnyObject?)
+            instance.quantity = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["quantity"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [Post]
+        Decoders.addDecoder(clazz: [Post].self) { (source: AnyObject) -> [Post] in
+            return Decoders.decode(clazz: [Post].self, source: source)
+        }
+        // Decoder for Post
+        Decoders.addDecoder(clazz: Post.self) { (source: AnyObject) -> Post in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = Post()
+            instance.id = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"] as AnyObject?)
+            instance.body = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["body"] as AnyObject?)
+            instance.handle = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["handle"] as AnyObject?)
+            instance.emotes = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["emotes"] as AnyObject?)
+            instance.infractions = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["infractions"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [PostsAndInfractions]
+        Decoders.addDecoder(clazz: [PostsAndInfractions].self) { (source: AnyObject) -> [PostsAndInfractions] in
+            return Decoders.decode(clazz: [PostsAndInfractions].self, source: source)
+        }
+        // Decoder for PostsAndInfractions
+        Decoders.addDecoder(clazz: PostsAndInfractions.self) { (source: AnyObject) -> PostsAndInfractions in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = PostsAndInfractions()
+            instance.posts = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["posts"] as AnyObject?)
+            instance.infractions = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["infractions"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [Room]
+        Decoders.addDecoder(clazz: [Room].self) { (source: AnyObject) -> [Room] in
+            return Decoders.decode(clazz: [Room].self, source: source)
+        }
+        // Decoder for Room
+        Decoders.addDecoder(clazz: Room.self) { (source: AnyObject) -> Room in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = Room()
+            instance.id = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"] as AnyObject?)
+            instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?)
+            return instance
+        }
+
+
+        // Decoder for [RoomsAndEmotes]
+        Decoders.addDecoder(clazz: [RoomsAndEmotes].self) { (source: AnyObject) -> [RoomsAndEmotes] in
+            return Decoders.decode(clazz: [RoomsAndEmotes].self, source: source)
+        }
+        // Decoder for RoomsAndEmotes
+        Decoders.addDecoder(clazz: RoomsAndEmotes.self) { (source: AnyObject) -> RoomsAndEmotes in
+            let sourceDictionary = source as! [AnyHashable: Any]
+
+            let instance = RoomsAndEmotes()
+            instance.rooms = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["rooms"] as AnyObject?)
+            instance.emotes = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["emotes"] as AnyObject?)
+            return instance
+        }
+
+
         // Decoder for [ValidateResponse]
         Decoders.addDecoder(clazz: [ValidateResponse].self) { (source: AnyObject) -> [ValidateResponse] in
             return Decoders.decode(clazz: [ValidateResponse].self, source: source)
@@ -159,6 +297,7 @@ class Decoders {
 
             let instance = ValidateResponse()
             instance.personExists = Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["person_exists"] as AnyObject?)
+            instance.authToken = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["auth_token"] as AnyObject?)
             return instance
         }
     }()
