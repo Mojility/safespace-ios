@@ -53,11 +53,17 @@ class IntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.logoView?.image = StyleKit.imageOfLogo
         self.titleView?.image = StyleKit.imageOfTitle
+    }
+    
+    func userDidTapImage() {
+        NSLog("User tapped imaage!")
     }
     
     /*

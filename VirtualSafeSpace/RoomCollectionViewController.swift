@@ -57,7 +57,7 @@ class RoomCollectionViewController: UICollectionViewController {
                 if let rooms = self.rooms {
                     if let first = indexPaths.first {
                         let navigationController = segue.destination as! UINavigationController
-                        let postsViewController = navigationController.viewControllers.first as! PostCollectionViewController
+                        let postsViewController = navigationController.viewControllers.first as! PostViewController
                         postsViewController.roomId = rooms[first.row].id!
                         postsViewController.roomName = rooms[first.row].name!
                     }

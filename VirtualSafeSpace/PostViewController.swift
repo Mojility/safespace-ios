@@ -1,8 +1,8 @@
 //
-//  PostCollectionViewController.swift
+//  PostViewController.swift
 //  VirtualSafeSpace
 //
-//  Created by Stacey Vetzal on 2017-03-24.
+//  Created by Stacey Vetzal on 2017-03-25.
 //  Copyright © 2017 Stacey Vetzal. All rights reserved.
 //
 
@@ -11,11 +11,25 @@ import SwaggerClient
 
 private let reuseIdentifier = "PostCell"
 
-class PostCollectionViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate {
+class PostViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    let bodies = [ "Post 1", "Post 2", "Post 3", "Post 4", "Post 5", "Post 6" ]
-    let authors = [ "johnny5, 1d ago", "jan, 8h ago", "johnny5, 1h ago", "johnny5, 38m ago", "jan, 8m ago", "johnny5, 3m ago" ]
-    let emotes = [ "", "❤️:3 ☺️:1", "😜:7", "", "❤️:3 ☺️:1", "😜:7" ]
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var textField: UITextField!
+    @IBAction func userDidClickPost(_ sender: Any) {
+
+        let request = RoomAPI.roomRoomIdPostPostWithRequestBuilder(roomId: self.roomId!, body: self.textField.text!)
+        let auth = (self.delegate?.authCode)!
+        _ = request.addHeader(name: "auth", value: auth)
+        request.execute { (response, error) in
+            if response != nil {
+                self.updatePosts()
+                self.textField.text = ""
+            } else {
+                NSLog("Unable to retrieve posts and infractions")
+            }
+        }
+
+    }
 
     var posts: [Post]?
     var infractions: [Infraction]?
@@ -24,17 +38,29 @@ class PostCollectionViewController: UICollectionViewController, UIPopoverPresent
     var roomName: String?
 
     var delegate: AppDelegate?
-    
-    var popoverAnchorButton = UIButton()
+
+    var refreshTimer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
         self.navigationController?.navigationBar.barTintColor = StyleKit.lightGray
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:StyleKit.primaryBlue]
 
         self.delegate = UIApplication.shared.delegate as? AppDelegate
 
+        updatePosts()
+        
+        refreshTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updatePosts), userInfo: nil, repeats: true)
+    }
+
+    override func viewDidLayoutSubviews() {
+    }
+    
+    func updatePosts() {
         let request = RoomAPI.roomRoomIdGetWithRequestBuilder(roomId: self.roomId!)
         let auth = (self.delegate?.authCode)!
         _ = request.addHeader(name: "auth", value: auth)
@@ -49,6 +75,8 @@ class PostCollectionViewController: UICollectionViewController, UIPopoverPresent
                     self.infractions = infractions
                 }
                 self.collectionView?.reloadData()
+                let indexPath = IndexPath(item: self.posts!.count-1, section: 0)
+                self.collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
             } else {
                 NSLog("Unable to retrieve posts and infractions")
             }
@@ -57,31 +85,31 @@ class PostCollectionViewController: UICollectionViewController, UIPopoverPresent
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if let name = self.roomName {
-            NSLog("Setting room name %@", name)
-        }
         self.navigationController?.title = self.roomName
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
+
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
+        // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     */
 
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let posts = self.posts {
             return posts.count
         } else {
@@ -89,7 +117,7 @@ class PostCollectionViewController: UICollectionViewController, UIPopoverPresent
         }
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionPostViewCell
 
         if let posts = self.posts {
@@ -117,24 +145,5 @@ class PostCollectionViewController: UICollectionViewController, UIPopoverPresent
 
         return cell
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionPostViewCell
-//        let anchorRect = CGRect(x: cell.center.x, y: cell.center.y, width: 1.0, height: 1.0)
-//        self.popoverAnchorButton.frame = anchorRect;
-//        performSegue(withIdentifier: "InfractionPopOver", sender: self);
-//
-    }
 
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "InfractionPopOver" {
-            let popoverViewController = segue.destination as! InfractionPopOverViewController
-            popoverViewController.modalPresentationStyle = .popover
-            popoverViewController.popoverPresentationController?.delegate = self
-        }
-    }
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
 }
