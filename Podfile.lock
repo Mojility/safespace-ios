@@ -1,0 +1,19 @@
+PODS:
+  - Alamofire (4.2.0)
+  - SwaggerClient (0.0.1):
+    - Alamofire (~> 4.0)
+
+DEPENDENCIES:
+  - SwaggerClient (from `./api-client/`)
+
+EXTERNAL SOURCES:
+  SwaggerClient:
+    :path: "./api-client/"
+
+SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  SwaggerClient: 7b78d4b5fef3e6edb5b869c30d18b64a76171318
+
+PODFILE CHECKSUM: b235b6ef83743ace2ae1d3418a3f2870a4dbcfa6
+
+COCOAPODS: 1.2.0

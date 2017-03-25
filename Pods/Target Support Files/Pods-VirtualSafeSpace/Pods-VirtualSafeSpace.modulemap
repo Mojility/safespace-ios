@@ -1,0 +1,6 @@
+framework module Pods_VirtualSafeSpace {
+  umbrella header "Pods-VirtualSafeSpace-umbrella.h"
+
+  export *
+  module * { export * }
+}

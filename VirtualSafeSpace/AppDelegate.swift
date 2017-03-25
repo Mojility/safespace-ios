@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwaggerClient
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+ 
+        InvitationAPI.authValidatePost(token: "069ee2") { (response, error) in
+            if let r = response {
+                if let exists = r.personExists {
+                    if exists {
+                        NSLog("Person exists")
+                    } else {
+                        NSLog("Person does not exist")
+                    }
+                }
+            }
+        }
+        
+//        let request = InvitationAPI.authValidatePostWithRequestBuilder(token: "069ee2")
+//        request.addHeader(name: "Auth", value: "binglejingle")
+//        request.execute { (response, error) in
+//            response?.body?.personExists
+//        }
+                
         return true
     }
 
